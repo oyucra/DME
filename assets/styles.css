@@ -1,0 +1,14 @@
+/* styles.css */
+body {
+    background-color: #005083 !important; /* Color de fondo */
+}
+
+/* Estilo para el texto del gráfico de barras */
+#bar-chart-container .bar-chart-text {
+    color: white !important; /* Color de texto blanco */
+}
+
+/* Estilo para la barra de count_by_selected_field */
+.bar-chart-container .trace.count_by_selected_field rect {
+    fill: red !important; /* Color de la barra rojo */
+}

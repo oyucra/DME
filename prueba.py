@@ -32,9 +32,6 @@ app = dash.Dash(__name__)
 # URL de la imagen
 imagen_url = "https://raw.githubusercontent.com/oyucra/DME/main/img/LogoV1.png"
 
-# Define un ícono (por ejemplo, un icono de punto de exclamación)
-icono = html.I(className="fas fa-exclamation-circle")
-
 # Obtener los valores únicos del campo NombreEntidad para el Dropdown en v1
 nombre_entidad_options_v1 = [{'label': entidad, 'value': entidad} for entidad in df_v1['NombreEntidad'].unique()]
 
@@ -52,8 +49,6 @@ nombre_entidad_options_v2 = [{'label': entidad, 'value': entidad} for entidad in
 app.layout = html.Div(
     children=[
         html.Div(
-            className='main-container',
-            style={'display': 'flex', 'align-items': 'center'},  # Alinear elementos verticalmente
             children=[
                 html.Img(src=imagen_url, style={'width': '3%'}),
                 html.Div(
@@ -63,16 +58,17 @@ app.layout = html.Div(
                         html.P("Este es un ejemplo de texto que va al lado de la imagen.")
                     ],
                     style={'padding-left': '20px'}  # Ajusta el espaciado a la izquierda del texto
-                ),
-                # Cuadro de resultados
-                html.Div(
-                    id='resultado-conteo',
-                    style={'border': '1px solid black', 'padding': '10px', 'margin-left': '20px'},
-                    children=[
-                        html.H4(f"Cantidad de celdas no vacías: {cantidad_celdas_no_vacias}"),  # Mostrar la cantidad de celdas no vacías
-                        icono  # Aquí se agrega el icono
-                    ]
-                ),
+                )
+            ],
+            style={'display': 'flex', 'align-items': 'center'}  # Alinea la imagen y el texto verticalmente
+        ),
+
+        # Cuadro de resultados
+        html.Div(
+            id='resultado-conteo',
+            style={'border': '1px solid black', 'padding': '10px', 'margin-top': '20px', 'flex': '20%'},
+            children=[
+               html.H4(f"Cantidad de celdas no vacías: {cantidad_celdas_no_vacias}")  # Mostrar la cantidad de celdas no vacías
             ]
         ),
 
@@ -115,16 +111,6 @@ app.layout = html.Div(
                     ]
                 ),
 
-                # Contenedor adicional entre el gráfico de barras y el mapa
-                html.Div(
-                    id='additional-container',
-                    style={'flex': '20%'},
-                    children=[
-                        # Aquí puedes agregar cualquier contenido adicional
-                        html.H3("Contenido Adicional"),
-                        html.P("Este es un contenedor adicional entre el gráfico de barras y el mapa."),
-                    ]
-                ),
                 # Contenedor del mapa para v2
                 html.Div(
                     id='map-container-v2',
