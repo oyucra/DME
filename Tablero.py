@@ -66,10 +66,11 @@ app.layout = html.Div(
                 ),
                 # Cuadro de resultados
                 html.Div(
+                    className='s-resultado',
                     id='resultado-conteo',
-                    style={'border': '1px solid black', 'padding': '10px', 'margin-left': '20px'},
+                    #style={'border': '1px solid black', 'padding': '10px', 'margin-left': '20px'},
                     children=[
-                        html.H4(f"Cantidad de celdas no vacías: {cantidad_celdas_no_vacias}"),  # Mostrar la cantidad de celdas no vacías
+                        html.H4(cantidad_celdas_no_vacias),  # Mostrar la cantidad de celdas no vacías
                         icono  # Aquí se agrega el icono
                     ]
                 ),

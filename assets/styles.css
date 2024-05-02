@@ -12,3 +12,11 @@ body {
 .bar-chart-container .trace.count_by_selected_field rect {
     fill: red !important; /* Color de la barra rojo */
 }
+
+/* Definir un estilo para un borde de 1px sólido negro, un relleno de 10px y un margen izquierdo de 20px */
+.s-resultado {
+    border: 3px solid rgb(5, 25, 124);
+    color: aqua;
+    padding: 10px;
+    margin-left: auto;
+}
