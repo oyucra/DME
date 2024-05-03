@@ -32,6 +32,11 @@ app = dash.Dash(__name__)
 # URL de la imagen
 imagen_url = "https://raw.githubusercontent.com/oyucra/DME/main/img/LogoV1.png"
 
+# URL del archivo SVG en GitHub
+ico_ficha = "https://raw.githubusercontent.com/oyucra/DME/main/icon/tab_icon_125139.svg"
+
+
+
 # Define un ícono (por ejemplo, un icono de punto de exclamación)
 icono = html.I(className="fas fa-exclamation-circle")
 
@@ -53,29 +58,44 @@ app.layout = html.Div(
     children=[
         html.Div(
             className='main-container',
-            style={'display': 'flex', 'align-items': 'center'},  # Alinear elementos verticalmente
+            style={'display': 'flex', 'align-items': 'center','justify-content': 'space-between'},  # Alinear elementos verticalmente
             children=[
-                html.Img(src=imagen_url, style={'width': '3%'}),
+                # Panel Logo
                 html.Div(
+                    style={'margin-right': 'auto', 'display': 'flex', 'align-items': 'center'},  # Ajusta el espaciado a la izquierda del texto
                     children=[
-                        html.H1("Panel de seguimiento a la evaluación de fichas tecnicas - DME",
-                            style={'text-align':'center', 'color': 'white','font-size':'20px'}),
-                        html.P("Este es un ejemplo de texto que va al lado de la imagen.")
+                        html.Img(src=imagen_url, style={'width': '4%'}),
+                            html.Div(
+                                children=[
+                                    html.H1("Panel de seguimiento a la evaluación de fichas tecnicas - DME",
+                                    style={'text-align':'center', 'color': 'white','font-size':'20px','marginBottom': '2px'}),
+                                    html.H3("Fecha Actualizacion:",style={'font-size':'15px','marginTop': '2px','color': 'yellow'})
+                                ],
+                            ),    
                     ],
-                    style={'padding-left': '20px'}  # Ajusta el espaciado a la izquierda del texto
+                    
                 ),
+                
                 # Cuadro de resultados
                 html.Div(
-                    className='s-resultado',
-                    id='resultado-conteo',
-                    #style={'border': '1px solid black', 'padding': '10px', 'margin-left': '20px'},
+                    id='resultado-conteo-container',  # Contenedor interno para el padding
                     children=[
-                        html.H4(cantidad_celdas_no_vacias),  # Mostrar la cantidad de celdas no vacías
-                        icono  # Aquí se agrega el icono
-                    ]
+                        html.Div(
+                            #className='s-resultado',
+                            id='resultado-conteo',
+                            children=[
+                            #style={'display': 'flex', 'align-items': 'center'}, 
+                                html.Img(src=ico_ficha,style={'width': '20%', 'height': '20%'}),
+                                html.H1(cantidad_celdas_no_vacias,style={'fontSize': '25px'})  # Mostrar la cantidad de celdas no vacías
+                            ],
+                            style={'margin-left': 'auto', 'display': 'flex', 'align-items': 'center', 'justify-content': 'center','background-color': 'lightblue','margin': '0 0px'}  # Alinea a la derecha        
+                        ),    
+                    ],
+                #    style={'margin-left': 'auto', 'padding': '1px'}  # Agrega padding y color de fondo al contenedor interno
                 ),
-            ]
+            ],
         ),
+        
 
         html.Div(children='''
             Visualización de datos desde Google Sheets.

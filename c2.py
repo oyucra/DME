@@ -1,13 +1,19 @@
 import dash
 from dash import html
 
-# Crear una aplicación Dash
 app = dash.Dash(__name__)
 
-# Definir el layout de la aplicación con un style personalizado
-app.layout = html.Div(style={'backgroundColor': 'lightblue', 'padding': '20px'}, children=[
-    html.H1('Título Principal', style={'color': 'red', 'textAlign': 'center'}),
-    html.P('Este es un párrafo con un estilo personalizado.', style={'fontSize': '18px', 'fontWeight': 'bold'})
+# URL del archivo SVG en GitHub
+github_svg_url = "https://raw.githubusercontent.com/oyucra/DME/main/icon/tab_icon_125139.svg"
+
+app.layout = html.Div(
+    style={'display': 'flex', 'align-items': 'center'},
+    children=[
+    html.H4("85"),
+    html.Div(
+        html.H2("pruebaq"),
+    ),
+    html.Img(src=github_svg_url, style={'width': '5%', 'height': '5%'})
 ])
 
 # Ejecutar la aplicación
